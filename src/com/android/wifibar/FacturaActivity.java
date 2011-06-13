@@ -46,6 +46,10 @@ public class FacturaActivity extends Activity {
 
       tvFac.setText("Factura nº:" + " " + String.valueOf(factura.getnFactura()));
       tvMesa.setText("Mesa nº:" + " " + String.valueOf(factura.getMesa()));
+
+      //FORMATO EUROS
+      DecimalFormat Currency = new DecimalFormat("#0.00 €");    
+      tvTotal.setText(String.valueOf(Currency.format(total)));
       tvTotal.setText(String.valueOf(total));
 
       EditText entrega = (EditText) findViewById(R.id.etEntregado);
@@ -81,7 +85,9 @@ public class FacturaActivity extends Activity {
       float vuelt = factura.getEntregado() - factura.getTotal();
       factura.setDevo(vuelt);
       TextView tvuel = (TextView) findViewById(R.id.tvPutDevolucion);
-      tvuel.setText(String.valueOf(vuelt));
+      //FORMATO EUROS
+      DecimalFormat Currency = new DecimalFormat("#0.00 €");     
+      tvuel.setText(String.valueOf(Currency.format(vuelt)));
    }
 
    // GETTERS AND SETTERS
